@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="en">
+	<texts>
+		<text name="ShareData" value="Share Data" />
+		<text name="DataForm" value="Data Form" />
+		<text name="HomePage" value="Home page" />
+		<text name="AccountSettings" value="Account Settings" />
+		<text name="ConfigureAccountSettings" value="Configure account settings to your needs" />
+		<text name="WelcomeBack" value="Welcome back, please login to your account" />
+		<text name="CreateAccount" value="Create Account" />
+		<text name="FillFormToCreateNewAccount" value="Fill the below form to create a new account." />
+		<text name="AcceptTermsConditions" value="I Accept The Terms And Conditions" />
+		<text name="General" value="General" />
+		<text name="About" value="About" />
+		<text name="WelcomeMessage" value="Welcome to Share Data!" />
+		<text name="Reset" value="Reset" />
+		<text name="EditProfile" value="Edit Profile" />
+		<text name="Messages" value="Messages" />
+		<text name="Password" value="Password" />
+		<text name="CurrentPassword" value="Current Password" />
+		<text name="NewPassword" value="New Password" />
+		<text name="ConfirmNewPassword" value="Confirm New Password" />
+		<text name="ResetPassword" value="Reset Password" />
+		<text name="ForgotPassword" value="Forgot Password?" />
+		<text name="ChangePassword" value="Change Password" />
+		<text name="RememberMe" value="Remember me" />
+		<text name="LogIn" value="Log in" />
+		<text name="LoginFailed" value="Login failed!" />
+		<text name="Name" value="Name" />
+		<text name="Surname" value="Surname" />
+		<text name="FullName" value="Full name" />
+		<text name="Age" value="Age" />
+		<text name="ValidAge" value="Please enter a valid age between 0 and 120 year" />
+		<text name="PhoneNumber" value="Phone Number" />
+		<text name="PhoneNumberDigit" value="Please enter a 11-digit phone number" />
+		<text name="Select" value="Select" />
+		<text name="Gender" value="Gender" />
+		<text name="Fax" value="Fax" />
+		<text name="Male" value="Male" />
+		<text name="Female" value="Female" />
+		<text name="Address" value="Address" />
+		<text name="ArabicTitle" value="Arabic Title" />
+		<text name="EnglishTitle" value="English Title" />
+		<text name="Description" value="Description" />
+		<text name="ArabicDescription" value="Arabic Description" />
+		<text name="EnglishDescription" value="English Description" />
+		<text name="Remove" value="Remove" />
+		<text name="EmailAddress" value="Email Address" />
+		<text name="Save" value="Save" />
+		<text name="Cancel" value="Cancel" />
+		<text name="Register" value="Register" />
+		<text name="Logout" value="Logout" />
+		<text name="IsActive" value="Is active" />
+		<text name="IsHome" value="Is Home" />
+		<text name="Yes" value="Yes" />
+		<text name="No" value="No" />
+		<text name="Note" value="Note" />
+		<text name="Next" value="Next" />
+		<text name="Previous" value="Previous" />
+		<text name="Optional" value="Optional" />
+		<text name="Required" value="This is required" />
+		<text name="AreYouSureDelete" value="Are you sure you want to delete this item?" />
+		<text name="ConfirmDeletion" value="Confirm Deletion" />
+		<text name="AreYouSureWantToDelete">Are you sure want to delete {0}?</text>
+		<text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
+		<text name="PleaseEnterLoginInformation" value="Please enter login information" />
+		<text name="AdminEmailAddress" value="Admin email address" />
+		<text name="AdminPassword" value="Admin password" />
+		<text name="DefaultPasswordIs" value="Default password is {0}" />
+		<text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
+		<text name="OrLoginWith" value="Or login with" />
+		<text name="WaitingForActivationMessage" value="Your account is waiting to be activated by system admin." />
+		<text name="DatabaseConnectionString" value="Database connection string" />
+		<text name="LeaveEmptyToSwitchToHost">Leave empty to switch to the host</text>
+		<text name="NotSelected">Not selected</text>
+		<text name="Change">Change</text>
+		<text name="ExpiryDate">Expiry Date</text>
+		<text name="PickDate">Pick-a-date</text>
+		<text name="MultiLevelMenu">Multi Level Menu</text>
+		<text name="Back">Back</text>
+		<text name="WaitingForEmailActivation">Your email address should be activated</text>
+		<text name="DisplayName">Display Name</text>
+		<text name="Edit">Edit</text>
+		<text name="Delete">Delete</text>
+		<text name="YesDeleteIt">Yes, delete it!</text>
+		<text name="Actions">Actions</text>
+		<text name="CouldNotCompleteLoginOperation">Could not complete login operation. Please try again later.</text>
+		<text name="ThisFieldIsRequired">This field is required</text>
+		<text name="PleaseWait">Please wait...</text>
+		<text name="Administration">Administration</text>
+		<text name="Clear">Clear</text>
+		<text name="ClearAll">Clear all</text>
+		<text name="ClearOthers">Clear others</text>
+		<text name="LabelOptions">Label options</text>
+		<text name="Permissions">Permissions</text>
+		<text name="Refresh">Refresh</text>
+		<text name="Create">Create</text>
+		<text name="Version">Version</text>
+		<text name="On">On</text>
+		<text name="Off">Off</text>
+		<text name="StartTyping">Start Typing</text>
+		<text name="Skins">Skins</text>
+		<text name="Settings">Settings</text>
+		<text name="Filter">Filter</text>
+		<text name="PasswordsDoNotMatch">Passwords do not match</text>
+		<text name="PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber">Passwords must be at least 8 characters, contain a lowercase, uppercase, and number</text>
+		<text name="SearchWithThreeDot">Search...</text>
+		<text name="PleaseEnterAtLeastNCharacter">Please enter at least {0} characters</text>
+		<text name="PleaseEnterNoMoreThanNCharacter">Please enter no more than {0} characters</text>
+		<text name="InvalidEmailAddress">Invalid email address</text>
+		<text name="InvalidPattern">Invalid</text>
+		<text name="PairsDoNotMatch">Do not match</text>
+		<text name="All">All</text>
+		<text name="TotalRecordsCount">Total: {0}</text>
+		<text name="Search">Search</text>
+		<text name="ResetPasswordStepOneInfo">1. Enter your administrator password</text>
+		<text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
+
+		<!--Roles-->
+		<text name="Roles">Roles</text>
+		<text name="CreateNewRole">Create new role</text>
+		<text name="EditRole">Edit role</text>
+		<text name="RoleName">Role Name</text>
+		<text name="UserRoles">User roles</text>
+		<text name="RoleDescription">Role description</text>
+		<text name="RoleDeleteWarningMessage">Role {0} will be deleted and unassigned from all assigned users.</text>
+		<text name="RoleSelection" value="Please select one of the User Roles." />
+
+		<!--Users-->
+		<text name="Users" value="Users" />
+		<text name="EditUser">Edit user</text>
+		<text name="CreateNewUser" value="Create new user" />
+		<text name="UserName" value="User name" />
+		<text name="UserDetails">User details</text>
+		<text name="UserNameOrEmail" value="User name or email" />
+		<text name="CouldNotValidateExternalUser">Could not validate external user</text>
+		<text name="UsersActivation">Users activation</text>
+		<text name="InvalidUserNameOrPassword" value="Invalid user name or password" />
+		<text name="UserIsNotActiveAndCanNotLogin" value="User {0} is not active and can not log in." />
+		<text name="UserEmailIsNotConfirmedAndCanNotLogin">Your email address is not confirmed. You can not login.</text>
+		<text name="UserLockedOutMessage">The user account has been locked out. Please try again later.</text>
+		<text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
+		<text name="UserDeleteWarningMessage">User {0} will be deleted.</text>
+
+		<!--Tenants-->
+		<text name="Tenants" value="Tenants" />
+		<text name="TenancyName" value="Tenancy name" />
+		<text name="CreateNewTenant" value="Create new tenant" />
+		<text name="EditTenant">Edit tenant</text>
+		<text name="CurrentTenant">Current tenant</text>
+		<text name="ChangeTenant">Change tenant</text>
+		<text name="TenantSelection" value="Tenant Selection" />
+		<text name="TenantSelection_Detail" value="Please select one of the following tenants." />
+		<text name="TenantNameCanNotBeEmpty" value="Tenant name can not be empty" />
+		<text name="ThereIsNoTenantDefinedWithName{0}" value="There is no tenant defined with name {0}" />
+		<text name="TenantIsNotActive" value="Tenant {0} is not active." />
+		<text name="TenantIdIsNotActive{0}">TenantId {0} is not active</text>
+		<text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
+		<text name="UnknownTenantId{0}">Unknown tenantId {0}</text>
+		<text name="TenantDeleteWarningMessage">Tenant {0} will be deleted.</text>
+
+		<!--Datatable-->
+		<text name="Datatable.Create" value="Create" />
+		<text name="Datatable.Search" value="Search:" />
+		<text name="Datatable.Actions" value="Actions" />
+		<text name="Datatable.Loading" value="Loading ..." />
+		<text name="Datatable.ItemsPerPage" value="Items Per Page" />
+		<text name="Datatable.Total" value="Total Items" />
+
+		<!--MediaFile-->
+		<text name="MediaFile.Attachments" value="Attachments" />
+		<text name="MediaFile.UploadPhoto" value="Upload Photo" />
+		<text name="MediaFile.ChooseFile" value="Choose File" />
+		<text name="MediaFile.Upload" value="Upload" />
+		<text name="MediaFile.Image" value="Image" />
+		<text name="MediaFile.Actions" value="Actions" />
+		<text name="MediaFile.Size" value="Size" />
+		<text name="MediaFile.DeleteImage" value="Delete Image" />
+		<text name="MediaFile.ImageName" value="Image Name" />
+		<text name="MediaFile.SelectedImages" value="Selected Images:" />
+		<text name="MediaFile.AllowedExtension" value="Allowed JPG, GIF or PNG. Max size of 800kB" />
+		<text name="MediaFile.Icon" value="Icon" />
+		<text name="MediaFile.HasMediaFiles" value="Has Media Files" />
+
+		<!--Successful-->
+		<text name="Success" value="Success" />
+		<text name="SavedSuccessfully" value="Item saved successfully" />
+		<text name="UpdatedSuccessfully" value="Item updated successfully" />
+		<text name="DeletedSuccessfully" value="Item deleted successfully" />
+		<text name="SuccessfullyRegistered">Successfully registered</text>
+		<text name="UploadedFileSuccessfully" value="The file has been uploaded successfully" />
+		<text name="UpdatedPasswordSuccessfully" value="The password has been updated successfully" />
+		<text name="DeletedFileSuccessfully" value="The file has been deleted successfully" />
+		<text name="SentMessageSuccessfully" value="The message has been sent successfully" />
+
+		<!--Error-->
+		<text name="Error" value="Error" />
+		<text name="ErrorDeletingItem" value="Error deleting item: " />
+
+		<!--WorkFlow-->
+		<text name="WorkFlow" value="WorkFlow" />
+		<text name="WorkFlow.Create" value="Create WorkFlow" />
+		<text name="WorkFlow.Edit" value="Edit WorkFlow" />
+		<text name="WorkFlow.DataForm" value="External data sharing request form workflow" />
+		<text name="WorkFlow.UnderConstruction" value="Under Construction!" />
+		<text name="WorkFlow.About" value="Workflow Plan An external data sharing request form for managing recurring processes and tasks that occur in a specific order" />
+		<text name="WorkFlow.HasAcceptNextStep" value="Has Accept Next Step" />
+		<text name="WorkFlow.HasRejectNextStep" value="Has Reject Next Step" />
+		<text name="WorkFlow.Accept" value="Accept" />
+		<text name="WorkFlow.Reject" value="Reject" />
+		<text name="WorkFlow.IsArchive" value="Is Archive" />
+		<text name="WorkFlow.IsAlreadyExisting" value="WorkFlow Is Already Existing" />
+		<text name="WorkFlow.IsNotExisting" value="WorkFlow Is Not Existing" />
+
+		<!--Form-->
+		<text name="Form.DataForm" value="Data Form" />
+		<text name="Form.DataForms" value="Data Forms" />
+		<text name="Form.SharingRequestForm" value="External Data Sharing Request Form" />
+		<text name="Form.DataRequesterInformation" value="Data Requester Information And Required Data" />
+		<text name="Form.DataSetName" value="Data Set Name" />
+		<text name="Form.RequiredData" value="Required Data" />
+		<text name="Form.EntityName" value="Entity Name" />
+		<text name="Form.EntityRepresentativeName" value="Entity Representative Name" />
+		<text name="Form.ParticipationPurpose" value="Participation Purpose" />
+		<text name="Form.UseDate" value="Use Date" />
+		<text name="Form.UsePeriod" value="Use Period" />
+		<text name="Form.DataSharingPeriodicity" value="Data Sharing Periodicity" />
+		<text name="Form.DataSharingPeriodicity.Daily" value="Daily" />
+		<text name="Form.DataSharingPeriodicity.Weekly" value="Weekly" />
+		<text name="Form.DataSharingPeriodicity.Monthly" value="Monthly" />
+		<text name="Form.DataSharingPeriodicity.Year" value="Year" />
+		<text name="Form.DataSharingPeriodicity.AtRequest" value="At Request" />
+		<text name="Form.DataForm.IsAlreadyExisting" value="Data Form Is Already Existing" />
+		<text name="Form.DataForm.IsNotExisting" value="Data Form Is Not Existing" />
+		<text name="Form.DataForm.IsArchived" value="Data Form Is Archived" />
+		<text name="Form.DataForm.MovedToNextStageSuccessfully" value="Form Has Been Moved To The Next Stage Successfully" />
+
+	</texts>
+</localizationDictionary>

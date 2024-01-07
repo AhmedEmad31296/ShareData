@@ -1,0 +1,54 @@
+﻿<environment names="Development">
+    <!-- BEGIN VENDOR JS -->
+    <script src="~/vendors/js/vendors.min.js"></script>
+    <script src="~/vendors/js/switchery.min.js"></script>
+    <!-- END VENDOR JS -->
+   
+    <!-- BEGIN PAGE VENDOR JS -->
+    <script src="~/vendors/js/sweetalert2.all.min.js"></script>
+    <script src="~/vendors/js/toastr.min.js"></script>
+    <!-- END PAGE VENDOR JS -->
+
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+    <script src="~/libs/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/libs/datatables/js/dataTables.bootstrap4.js"></script>
+    <!-- BEGIN APEX JS -->
+    <script src="~/js/core/app-menu.min.js"></script>
+    <script src="~/js/core/app.min.js"></script>
+    <script src="~/js/notification-sidebar.min.js"></script>
+    <script src="~/js/customizer.min.js"></script>
+    <script src="~/js/scroll-top.min.js"></script>
+    <!-- END APEX JS -->
+
+    <!-- BEGIN PAGE LEVEL JS -->
+    <script src="~/js/ex-component-sweet-alerts.min.js"></script>
+    <script src="~/js/ex-component-toastr.min.js"></script>
+    <script src="~/js/components-modal.min.js"></script>
+    <!-- END PAGE LEVEL JS -->
+   
+    <!-- BEGIN: Custom CSS -->
+    <script src="~/js/scripts.js"></script>
+    <!-- END: Custom CSS -->
+   
+</environment>
+
+<environment names="Development,Staging,Production">
+    <!-- BEGIN CORE SCRIPTS -->
+    @*  <script src="~/libs/jquery/jquery.js" asp-append-version="true"></script>*@
+    @* <script src="~/libs/block-ui/jquery.blockUI.js" asp-append-version="true"></script>
+    <script src="~/libs/spin/spin.js" asp-append-version="true"></script>
+    <script src="~/libs-ext/spin/jquery.spin.js" asp-append-version="true"></script>
+    <script src="~/libs/moment/moment-with-locales.js" asp-append-version="true"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.js" asp-append-version="true"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+    <script src="~/libs/push.js/push.js" asp-append-version="true"></script>*@
+    <!-- END CORE SCRIPTS -->
+
+</environment>
+
+<environment names="Staging,Production">
+    <!-- BEGIN: Additional scripts for Staging and Production -->
+    <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
+    <!-- END: Additional scripts for Staging and Production -->
+</environment>

@@ -1,0 +1,46 @@
+﻿@using ShareData.Web.Startup;
+@model ShareData.Web.Models.Roles.RoleListViewModel
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <h4 class="card-title">
+                    @L("Roles")
+                </h4>
+                <a href="javascript:;" data-toggle="modal" data-target="#RoleCreateModal" class="btn btn-success bg-light-success mb-1">
+                    <i class="fa fa-plus-square"></i>
+                    @L("Datatable.Create")
+                </a>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <table id="tblRoles" class="table table-sm table-striped table-bordered flex-sm-nowrap">
+                        <thead>
+                            <tr>
+                                <th>@L("RoleName")</th>
+                                <th>@L("DisplayName")</th>
+                                <th>@L("Actions")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Views/Roles/_CreateModal.cshtml", Model)
+
+
+<div class="modal fade" id="RoleEditModal" tabindex="-1" role="dialog" aria-labelledby="RoleEditModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <partial name="_Script" />
+}

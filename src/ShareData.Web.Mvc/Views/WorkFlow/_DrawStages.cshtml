@@ -1,0 +1,57 @@
+﻿<style>
+    .text-wrap {
+        white-space: normal;
+    }
+
+    .row {
+        width: auto;
+    }
+
+    p {
+        display: block;
+        width: 100%;
+    }
+    .col-xs-12 {
+        width: 100%;
+        padding: 0 7px;
+    }
+
+    .col-xs-6 {
+        width: 50%;
+        padding: 0 7px;
+    }
+
+    p.arrow {
+        width: auto;
+        display: inline-block;
+    }
+
+    a.step {
+        display: block;
+        margin: auto;
+    }
+</style>
+@model string;
+<div class="container">
+    @Html.Raw(Model)
+</div>
+
+@await Html.PartialAsync("~/Views/WorkFlow/_CreateStageModal.cshtml")
+
+<div class="modal fade" id="editWorkFlowModal" tabindex="-1" role="dialog" aria-labelledby="editWorkFlowModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<div class="modal fade text-left" id="editWorkFlowStageModal" tabindex="-1" role="dialog" aria-labelledby="editWorkFlowStageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    <partial name="_Script" />
+}

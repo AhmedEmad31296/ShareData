@@ -1,0 +1,44 @@
+﻿<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <h4 class="card-title">
+                    @L("Form.DataForms")
+                </h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <table id="tblForms" class="table table-sm table-striped table-bordered flex-sm-nowrap">
+                        <thead>
+                            <tr>
+                                <th>@L("Form.EntityName")</th>
+                                <th>@L("Form.EntityRepresentativeName")</th>
+                                <th>@L("PhoneNumber")</th>
+                                <th>@L("EmailAddress")</th>
+                                <th>@L("Form.UseDate")</th>
+                                <th>@L("Form.DataSharingPeriodicity")</th>
+                                <th>@L("Form.UsePeriod")</th>
+                                <th>@L("Actions")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade text-left" id="EmployeeAttachmentsModal" tabindex="-1" role="dialog" aria-labelledby="EmployeeAttachmentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+@section scripts
+    {
+    <partial name="_Script" />
+    }

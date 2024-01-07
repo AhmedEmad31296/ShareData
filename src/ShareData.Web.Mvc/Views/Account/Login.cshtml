@@ -1,0 +1,56 @@
+﻿@using Abp.Authorization.Users
+@model ShareData.Web.Models.Account.LoginFormViewModel
+@{
+    ViewBag.Title = L("LogIn");
+}
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
+    </environment>
+}
+<section id="login" class="auth-height">
+    <div class="row full-height-vh m-0">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="card overflow-hidden">
+                <div class="card-content">
+                    <div class="card-body auth-img">
+                        <div class="row m-0">
+                            <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center auth-img-bg p-3">
+                                <img src="~/img/gallery/login.png" alt="" class="img-fluid" width="300" height="230">
+                            </div>
+                            <div class="col-lg-6 col-12 px-4 py-3">
+                                <form id="LoginForm" asp-action="Login" method="post">
+                                    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                                    <input type="hidden" name="returnUrlHash" />
+                                    <h4 class="mb-2 card-title">@L("LogIn")</h4>
+                                    <p>@L("WelcomeBack")</p>
+                                    <input type="text" class="form-control mb-3" name="usernameOrEmailAddress" placeholder="@L("UserNameOrEmail")" required autofocus maxlength="@AbpUserBase.MaxEmailAddressLength">
+                                    <input type="password" class="form-control mb-2" id="userpassword" name="Password" autocomplete="password" placeholder="@L("Password")" required maxlength="@AbpUserBase.MaxPlainPasswordLength">
+                                    <div class="d-sm-flex justify-content-between mb-3 font-small-2">
+                                        <div class="remember-me mb-2 mb-sm-0">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="auth-ligin">
+                                                <label class="custom-control-label" for="auth-ligin"><span>@L("RememberMe")</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center flex-sm-row flex-column">
+                                        <button type="submit" class="btn gradient-mint m-2">@L("LogIn")</button>
+                                        <a asp-action="Register" class="btn gradient-purple-bliss m-2">@L("Register")</a>
+                                    </div>
+                                    <hr>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

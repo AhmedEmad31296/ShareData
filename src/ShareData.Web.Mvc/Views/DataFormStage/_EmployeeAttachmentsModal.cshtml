@@ -1,0 +1,30 @@
+﻿@*@using TasksManagement.DailyTasks.Dto;
+@model List<UpdatedDailyTaskAttachmentDto>
+<div class="modal-header">
+    <h6 class="modal-title" id="myModalLabel35">@L("DailyTask.EmployeeNoteAttachments") </h6>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="ft-x font-medium-2 text-bold-700"></i></span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="card border-0 box-shadow-0">
+        <div class="card-content">
+            @foreach (var item in Model)
+            {
+                <div class="card-body">
+                    <p class="card-text pt-1"><small class="text-muted">@item.CreatedDate</small></p>
+                </div>
+                <img class="card-img-bottom img-fluid" src="@item.MediaFileUrl" alt="image">
+            }
+            <br />
+            <hr />
+            <br />
+            <div class="alert alert-success" role="alert">
+                <span class="text-bold-600">@L("Note")</span>
+                <br />
+                @Model.FirstOrDefault().Note
+            </div>
+        </div>
+    </div>
+</div>
+*@

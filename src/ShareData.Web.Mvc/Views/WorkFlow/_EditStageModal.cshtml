@@ -1,0 +1,66 @@
+﻿@using ShareData.WorkFlowManagemet;
+@model WorkFlowStage
+<div class="modal-header">
+    <h6 class="modal-title">@L("WorkFlow.Edit")</h6>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="ft-x font-medium-2 text-bold-700"></i></span>
+    </button>
+</div>
+<form name="editWorkFlowStageForm" role="form" class="form-horizontal">
+    <input hidden name="id" value="@Model.Id" />
+    <div class="modal-body">
+        <fieldset class="form-group floating-label-form-group">
+            <label for="name">@L("Name")</label>
+            <input type="text" class="form-control" name="name" id="name" asp-for="Name" placeholder="@L("Name")" required minlength="2">
+        </fieldset>
+        <br>
+        <fieldset class="form-group floating-label-form-group">
+            <label for="activity">@L("UserRoles")</label>
+            <div class="form-group">
+                <select class="form-control" name="RoleId" id="userRoles" asp-for="RoleId" asp-items="@(ViewData["UserRoles"] as SelectList)" required>
+                    <option selected disabled value="">@L("Select")</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset class="form-group floating-label-form-group">
+            <div class="col-md-9">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="HasMediaFiles" id="hasMediaFiles" @(Model.HasMediaFiles ? "checked" : "") />
+                    <label class="custom-control-label" for="hasMediaFiles">@L("MediaFile.HasMediaFiles")</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="form-group floating-label-form-group">
+            <div class="col-md-9">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="IsArchived" id="isArchived" @(Model.IsArchived ? "checked" : "") />
+                    <label class="custom-control-label" for="isArchived">@L("WorkFlow.IsArchive")</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="form-group floating-label-form-group">
+            <div class="col-md-9">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="HasAcceptNextStep" id="hasAcceptNextStep" @(Model.HasAcceptNextStep ? "checked" : "") />
+                    <label class="custom-control-label" for="hasAcceptNextStep">@L("WorkFlow.HasAcceptNextStep")</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="form-group floating-label-form-group">
+            <div class="col-md-9">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" name="HasRejectNextStep" id="hasRejectNextStep" @(Model.HasRejectNextStep ? "checked" : "") />
+                    <label class="custom-control-label" for="hasRejectNextStep">@L("WorkFlow.HasRejectNextStep")</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="form-group floating-label-form-group">
+            <label for="description">@L("Description")</label>
+            <textarea type="text" class="form-control" name="Description" asp-for="Description" id="description" placeholder="@L("Description")"></textarea>
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn bg-light-success" onclick="updateStage()">@L("Save")</button>
+        <button type="reset" class="btn bg-light-secondary" data-dismiss="modal">@L("Cancel")</button>
+    </div>
+</form>

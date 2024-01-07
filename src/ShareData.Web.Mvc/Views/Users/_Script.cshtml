@@ -1,0 +1,191 @@
+﻿<script>
+    $(document).ready(function () {
+        getAll();
+    });
+    var dt = null;
+    function getAll() {
+        if (dt == null)
+            dt = $('#tblUsers').DataTable({
+                "serverSide": true,
+                "filter": true,
+                "ordering": true,
+                "processing": true,
+                "language": {
+                    "sProcessing": "جارٍ التحميل...",
+                    "sLengthMenu": "أظهر _MENU_ مدخلات",
+                    "sZeroRecords": "لم يعثر على أية سجلات",
+                    "sInfo": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix": "",
+                    "sSearch": "ابحث: ",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "الأول",
+                        "sPrevious": "السابق",
+                        "sNext": "التالي",
+                        "sLast": "الأخير"
+                    }
+                },
+                "ajax": {
+                    "url": "@Url.Action("GetPaged","Users")",
+                    "type": "POST",
+                    "dataType": "json",
+                    "data": {},
+                },
+                "columns": [
+                    { "data": "userName", "name": "UserName", "autoWidth": true, },
+                    { "data": "fullName", "name": "FullName", "autoWidth": true },
+                    { "data": "emailAddress", "name": "EmailAddress", "autoWidth": true },
+                    {
+                        "data": "isActive",
+                        "name": "IsActive",
+                        "autoWidth": true,
+                        "render": function (data, type, row) {
+                            var isActiveStates = '',
+                                isActiveStates = data == true ? '<span class="badge bg-light-success">' + '@L("Yes")' + '</span>' : '<span class="badge bg-light-danger">' + '@L("No")' + '</span>';
+                            return isActiveStates;
+                        }
+                    },
+                    {
+                        "render": function (data, type, row) {
+                            var deleteBtn = '', editBtn = '';
+
+                            editBtn = '<a href="#" class="success" onclick="editItem(' + row.id + ')"><i class="ft-edit font-medium-3"></i></a>';
+                            deleteBtn = '<a href="#" class="danger" onclick="deleteItem(' + row.id + ')"><i class="ft-trash font-medium-3"></i></a>'
+                            return deleteBtn + ' ' + editBtn;
+                        },
+                        "orderable": false,
+                    }
+                ],
+            });
+        else
+            dt.ajax.reload(null, false);
+
+    }
+
+
+    function create() {
+        var password = $('#Password').val();
+        var confirmPassword = $('#ConfirmPassword').val();
+
+        if (password !== confirmPassword) {
+            toastr.error('@L("PasswordsDoNotMatch")', '@L("Error")');
+            return;
+        }
+
+        var _$form = $('form[name="userCreateForm"]');
+        abp.ui.setBusy(_$form);
+        var userData = {
+            UserName: _$form.find('[name="UserName"]').val(),
+            Name: _$form.find('[name="Name"]').val(),
+            Surname: _$form.find('[name="Surname"]').val(),
+            EmailAddress: _$form.find('[name="EmailAddress"]').val(),
+            Password: _$form.find('[name="Password"]').val(),
+            IsActive: _$form.find('[name="IsActive"]').val(),
+        };
+
+        userData.roleNames = [];
+        var _$roleCheckboxes = _$form.find("input[name='role']:checked");
+
+        if (_$roleCheckboxes.length !== 0) {
+            _$roleCheckboxes.each(function () {
+                userData.roleNames.push($(this).val());
+            });
+        }
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Create","Users")",
+            contentType: "application/json",
+            data: JSON.stringify(userData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success('@L("SavedSuccessfully")', '@L("Success")');
+                $('#UserCreateModal').modal('hide');
+                getAll();
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+
+    function editItem(id) {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("EditModal","Users")" + "/" + id,
+            success: function (data) {
+                $('#UserEditModal .modal-content').html(data);
+                $('#UserEditModal').modal('show');
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+
+    function update() {
+        var _$form = $('form[name="userEditForm"]');
+        abp.ui.setBusy(_$form);
+
+        var userData = {
+            Id: _$form.find('[name="Id"]').val(),
+            UserName: _$form.find('[name="UserName"]').val(),
+            Name: _$form.find('[name="Name"]').val(),
+            Surname: _$form.find('[name="Surname"]').val(),
+            EmailAddress: _$form.find('[name="EmailAddress"]').val(),
+            IsActive: _$form.find('[name="IsActive"]').prop("checked"),
+        };
+        userData.roleNames = [];
+        var _$roleCheckboxes = _$form.find("input[name='role']:checked");
+        if (_$roleCheckboxes.length !== 0) {
+            _$roleCheckboxes.each(function () {
+                userData.roleNames.push($(this).val());
+            });
+        }
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "@Url.Action("Update","Users")",
+            data: JSON.stringify(userData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success('@L("UpdatedSuccessfully")', '@L("Success")');
+                $('#UserEditModal').modal('hide');
+                getAll();
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+
+    function deleteItem(id) {
+        Swal.fire({
+            title: '@L("ConfirmDeletion")',
+            text: '@L("AreYouSureDelete")',
+            showCancelButton: true,
+            confirmButtonText: '@L("YesDeleteIt")',
+            cancelButtonText: '@L("Cancel")',
+            onOpen: (popup) => {
+                popup.querySelector('.swal2-warning').style.display = 'flex';
+            }
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("Delete","Users")",
+                    data: { id: id },
+                    success: function (res) {
+                        getAll();
+                        toastr.success(res.result.message, '@L("Success")');
+                    },
+                    error: function (res) {
+                        toastr.error(res.result.message, '@L("Error")');
+                    }
+                });
+            }
+        });
+    }
+
+</script>

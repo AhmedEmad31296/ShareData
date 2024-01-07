@@ -1,0 +1,108 @@
+﻿@using ShareData.Common;
+@using ShareData.DataForm.Dto;
+@{
+    var dataSharingPeriodicities = ViewData["DataSharingPeriodicities"] as SelectList;
+}
+@model GetFullInfoDataFormDto;
+
+<section id="action-form-layout">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">@L("Form.SharingRequestForm")</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <p>@L("Form.DataRequesterInformation")</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">@L("Form.EntityName")</label>
+                                <input type="text" id="name" class="form-control" name="EntityName" asp-for="EntityName" readonly disabled>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="representativeName">@L("Form.EntityRepresentativeName")</label>
+                                        <input type="text" id="representativeName" class="form-control" name="EntityRepresentativeName" asp-for="EntityRepresentativeName" readonly disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="phoneNumber">@L("PhoneNumber")</label>
+                                        <input type="text" id="phoneNumber" class="form-control" name="PhoneNumber" asp-for="PhoneNumber" readonly disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="emailAddress">@L("EmailAddress")</label>
+                                        <input type="text" id="emailAddress" class="form-control" name="EmailAddress" asp-for="EmailAddress" readonly disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataSetName">@L("Form.DataSetName")</label>
+                                <input type="text" id="dataSetName" class="form-control" name="DataSetName" asp-for="DataSetName" readonly disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="requiredData">@L("Form.RequiredData")</label>
+                                <textarea id="requiredData" class="form-control" name="RequiredData" asp-for="RequiredData" readonly disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="participationPurpose">@L("Form.ParticipationPurpose")</label>
+                                <textarea id="participationPurpose" class="form-control" name="ParticipationPurpose" asp-for="ParticipationPurpose" readonly disabled></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="useDate">@L("Form.UseDate")</label>
+                                        <input type="text" id="useDate" class="form-control" name="UseDate" asp-for="UseDate" readonly disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="usePeriod">@L("Form.UsePeriod")</label>
+                                        <input type="text" id="usePeriod" class="form-control" name="UsePeriod" asp-for="UsePeriod" readonly disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataSharingPeriodicity">@L("Form.DataSharingPeriodicity")</label>
+                                @foreach (var type in dataSharingPeriodicities)
+                                {
+                                    <div class="col-md-6">
+                                        <input type="checkbox" name="DataSharingPeriodicity" id="@type.Value" value="@type.Value" disabled readonly
+                                        @(Model.DataSharingPeriodicity == (DataSharingPeriodicity)Enum.Parse(typeof(DataSharingPeriodicity), type.Value.ToString()) ? "checked" : "") />
+                                        <label for="@type.Value" title="@type.Text">@type.Text</label>
+                                    </div>
+                                }
+                            </div>
+                            @if (Model.IsArchived)
+                            {
+
+                                <span class="badge bg-light-Secondary mb-1 mr-2">@L("Form.DataForm.IsArchived")</span>
+                            }
+                            else if (Model.HasPermission && !Model.IsArchived)
+                            {
+                                <div style="text-align: center;">
+                                    <button type="button" class="btn btn-success mr-2" onclick="takeFormStageNextAction(@Model.Id,1)"><i class="ft-check-square mr-1"></i>@L("WorkFlow.Accept")</button>
+                                    <button type="button" class="btn btn-danger" onclick="takeFormStageNextAction(@Model.Id,0)"><i class="fa fa-times mr-1"></i>@L("WorkFlow.Reject")</button>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade text-left" id="SendNoteFormModal" tabindex="-1" role="dialog" aria-labelledby="SendNoteFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+@section scripts
+    {
+    <partial name="_Script" />
+    }

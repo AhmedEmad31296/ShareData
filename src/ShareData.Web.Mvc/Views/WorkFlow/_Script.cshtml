@@ -1,0 +1,146 @@
+﻿<script>
+    function createWorkFlow() {
+        var _$form = $('form[name="createWorkFlowForm"]');
+        abp.ui.setBusy(_$form);
+        // Serialize the form data as an object
+        var formData = _$form.serializeArray().reduce(function (obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Create", "WorkFlow")",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success(res.result, '@L("Success")');
+                $('#createWorkFlowModal').modal('hide');
+                location.reload(true)
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+    function updateWorkFlow() {
+        var _$form = $('form[name="editWorkFlowForm"]');
+        abp.ui.setBusy(_$form);
+        // Serialize the form data as an object
+        var formData = _$form.serializeArray().reduce(function (obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Update")",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success(res.result, '@L("Success")');
+                $('#editWorkFlowModal').modal('hide');
+                window.location.href = '@Url.Action("Index")';
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+    function editWorkFlow() {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("EditWorkFlowModal")",
+            success: function (data) {
+                $('#editWorkFlowModal .modal-content').html(data);
+                $('#editWorkFlowModal').modal('show');
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+    function editStage(id) {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("EditWorkFlowStageModal")" + "/" + id,
+            success: function (data) {
+                $('#editWorkFlowStageModal .modal-content').html(data);
+                $('#editWorkFlowStageModal').modal('show');
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+    function createWorkFlowStageModal(workFlowId, parentId, levelStatus) {
+        $('[name="workFlowId"]').val(workFlowId);
+        $('[name="parentId"]').val(parentId);
+        $('[name="levelStatus"]').val(levelStatus);
+        $('#createWorkFlowStageModal').modal('show');
+    }
+    function createStage() {
+        var _$form = $('form[name="createWorkFlowStageForm"]');
+        var selectedUserRole = $('#userRoles').val();
+        // Check if selectedUserRole is valid
+        if (!selectedUserRole) {
+            toastr.error('@L("RoleSelection")');
+            return;
+        }
+        abp.ui.setBusy(_$form);
+        // Serialize the form data as an object
+        var formData = _$form.serializeArray().reduce(function (obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+        formData.roleId = selectedUserRole;
+        formData.HasMediaFiles = _$form.find('[name="HasMediaFiles"]').prop('checked');
+        formData.IsArchived = _$form.find('[name="IsArchived"]').prop('checked');
+        formData.HasAcceptNextStep = _$form.find('[name="HasAcceptNextStep"]').prop('checked');
+        formData.HasRejectNextStep = _$form.find('[name="HasRejectNextStep"]').prop('checked');
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("CreateStage")",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success(res.result, '@L("Success")');
+                $('#createWorkFlowStageModal').modal('hide');
+                window.location.href = '@Url.Action("Index")';
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+    function updateStage() {
+        var _$form = $('form[name="editWorkFlowStageForm"]');
+        var selectedUserRole = $('#userRoles').val();
+        abp.ui.setBusy(_$form);
+        // Serialize the form data as an object
+        var formData = _$form.serializeArray().reduce(function (obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+        formData.HasMediaFiles = _$form.find('[name="HasMediaFiles"]').prop('checked');
+        formData.IsArchived = _$form.find('[name="IsArchived"]').prop('checked');
+        formData.HasAcceptNextStep = _$form.find('[name="HasAcceptNextStep"]').prop('checked');
+        formData.HasRejectNextStep = _$form.find('[name="HasRejectNextStep"]').prop('checked');
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("UpdateStage")",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success(res.result, '@L("Success")');
+                $('#editWorkFlowStageModal').modal('hide');
+                window.location.href = '@Url.Action("Index")';
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+</script>

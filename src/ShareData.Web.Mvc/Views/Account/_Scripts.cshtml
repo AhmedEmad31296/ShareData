@@ -1,0 +1,46 @@
+﻿<environment names="Development">
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/vendors/js/vendors.min.js"></script>
+    <script src="~/vendors/js/switchery.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN APEX JS-->
+    <script src="~/js/core/app-menu.min.js"></script>
+    <script src="~/js/core/app.min.js"></script>
+    <script src="~/js/notification-sidebar.min.js"></script>
+    <script src="~/js/customizer.min.js"></script>
+    <script src="~/js/scroll-top.min.js"></script>
+    <!-- END APEX JS-->
+    <!-- BEGIN: Custom CSS-->
+    <script src="~/js/scripts.js"></script>
+    <!-- END: Custom CSS-->
+    @*core scripts start*@
+    <script src="~/libs/jquery/jquery.js" asp-append-version="true"></script>
+    @*core scripts end*@
+
+    @*abp scripts start*@
+    <script src="~/libs/block-ui/jquery.blockUI.js" asp-append-version="true"></script>
+    <script src="~/libs/spin/spin.js" asp-append-version="true"></script>
+    <script src="~/libs-ext/spin/jquery.spin.js" asp-append-version="true"></script>
+    <script src="~/libs/sweetalert/sweetalert.min.js" asp-append-version="true"></script>
+    <script src="~/libs/toastr/toastr.min.js" asp-append-version="true"></script>
+    <script src="~/libs/moment/moment-with-locales.js" asp-append-version="true"></script>
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
+    <script src="~/libs/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
+    @*abp scripts end*@
+
+
+    @*other scripts start*@
+    <script src="~/libs/jquery-validate/jquery.validate.js" asp-append-version="true"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+    @*other scripts end*@
+
+</environment>
+
+<environment names="Staging,Production">
+    <script src="~/view-resources/Views/_Bundles/account-layout.min.js" asp-append-version="true"></script>
+</environment>

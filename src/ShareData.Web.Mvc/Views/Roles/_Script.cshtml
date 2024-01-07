@@ -1,0 +1,159 @@
+﻿<script>
+    $(document).ready(function () {
+        getAll();
+    });
+    var dt = null;
+    function getAll() {
+        if (dt == null)
+            dt = $('#tblRoles').DataTable({
+                "serverSide": true,
+                "filter": true,
+                "ordering": true,
+                "processing": true,
+                "language": {
+                    "sProcessing": "جارٍ التحميل...",
+                    "sLengthMenu": "أظهر _MENU_ مدخلات",
+                    "sZeroRecords": "لم يعثر على أية سجلات",
+                    "sInfo": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                    "sInfoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
+                    "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                    "sInfoPostFix": "",
+                    "sSearch": "ابحث: ",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "الأول",
+                        "sPrevious": "السابق",
+                        "sNext": "التالي",
+                        "sLast": "الأخير"
+                    }
+                },
+                "ajax": {
+                    "url": "@Url.Action("GetPaged","Roles")",
+                    "type": "POST",
+                    "dataType": "json",
+                    "data": {},
+                },
+                "columns": [
+                    { "data": "name", "name": "Name", "autoWidth": true, },
+                    { "data": "displayName", "name": "DisplayName", "autoWidth": true },
+                    {
+                        "render": function (data, type, row) {
+                            var deleteBtn = '', editBtn = '';
+
+                            editBtn = '<a href="#" class="success" onclick="editItem(' + row.id + ')"><i class="ft-edit font-medium-3"></i></a>';
+                            deleteBtn = '<a href="#" class="danger" onclick="deleteItem(' + row.id + ')"><i class="ft-trash font-medium-3"></i></a>'
+                            return deleteBtn + ' ' + editBtn;
+                        },
+                        "orderable": false,
+                    }
+                ],
+            });
+        else
+            dt.ajax.reload(null, false);
+
+    }
+
+    function create() {
+        var _$form = $('form[name="roleCreateForm"]');
+        abp.ui.setBusy(_$form);
+        var roleData = {
+            Name: _$form.find('[name="Name"]').val(),
+            DisplayName: _$form.find('[name="DisplayName"]').val(),
+            Description: _$form.find('[name="Description"]').val()
+        };
+        roleData.grantedPermissions = [];
+        var _$permissionCheckboxes = _$form.find("input[name='permission']:checked");
+        _$permissionCheckboxes.each(function () {
+            roleData.grantedPermissions.push($(this).val());
+        });
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Create", "Roles")",
+            contentType: "application/json",
+            data: JSON.stringify(roleData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success('@L("SavedSuccessfully")', '@L("Success")');
+                $('#RoleCreateModal').modal('hide');
+                getAll();
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+
+    function editItem(id) {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("EditModal","Roles")" + "/" + id,
+            success: function (data) {
+                $('#RoleEditModal .modal-content').html(data);
+                $('#RoleEditModal').modal('show');
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+
+    function update() {
+        var _$form = $('form[name="roleEditForm"]');
+        abp.ui.setBusy(_$form);
+        var roleData = {
+            Id: _$form.find('[name="Id"]').val(),
+            Name: _$form.find('[name = "Name"]').val(),
+            DisplayName: _$form.find('[name="DisplayName"]').val(),
+            Description: _$form.find('[name="Description"]').val()
+        };
+        roleData.grantedPermissions = [];
+        var _$permissionCheckboxes = _$form.find("input[name='permission']:checked");
+        _$permissionCheckboxes.each(function () {
+            roleData.grantedPermissions.push($(this).val());
+        });
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Update","Roles")",
+            contentType: "application/json",
+            data: JSON.stringify(roleData),
+            success: function (res) {
+                abp.ui.clearBusy(_$form);
+                toastr.success('@L("UpdatedSuccessfully")', '@L("Success")');
+                $('#RoleEditModal').modal('hide');
+                getAll();
+            },
+            error: function (res) {
+                toastr.error(res.responseJSON.error.message, '@L("Error")');
+            }
+        });
+    }
+
+    function deleteItem(id) {
+        Swal.fire({
+            title: '@L("ConfirmDeletion")',
+            text: '@L("AreYouSureDelete")',
+            showCancelButton: true,
+            confirmButtonText: '@L("YesDeleteIt")',
+            cancelButtonText: '@L("Cancel")',
+            onOpen: (popup) => {
+                popup.querySelector('.swal2-warning').style.display = 'flex';
+            }
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: "@Url.Action("Delete","Roles")",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (res) {
+                        getAll();
+                        toastr.success(res.result.message, '@L("Success")');
+                    },
+                    error: function (res) {
+                        toastr.error(res.result.message, '@L("Error")');
+                    }
+                });
+            }
+        });
+    }
+
+</script>

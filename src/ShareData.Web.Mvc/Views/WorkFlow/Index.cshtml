@@ -1,0 +1,101 @@
+﻿<style>
+    .text-wrap {
+        white-space: normal;
+    }
+
+    .row {
+        width: auto;
+    }
+
+    p {
+        display: block;
+        width: 100%;
+    }
+
+    .col-xs-12 {
+        width: 100%;
+        padding: 0 7px;
+    }
+
+    .col-xs-6 {
+        width: 50%;
+        padding: 0 7px;
+    }
+
+    p.arrow {
+        width: auto;
+        display: inline-block;
+    }
+
+    p.step {
+        display: block;
+        margin: auto;
+        width: fit-content;
+    }
+</style>
+<header>
+    <h2 class="text-center">
+        <a href="javascript:;" data-toggle="modal" data-target="#editWorkFlowStageModal" class="btn btn-warning bg-light-warning btn-icon round mr-1 mb-1">
+            <i class="fa fa-edit"></i>
+        </a>
+    </h2>
+</header>
+<div class="d-flex justify-content-between pb-2">
+    <h6 class="page-header"></h6>
+    
+        <a href="javascript:;" data-toggle="modal" data-target="#createWorkFlowStageModal" class="btn btn-success bg-light-success mb-1">
+            <i class="fa fa-plus-square"></i>
+            @L("Create")
+        </a>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <p class="btn lead text-center bg-light-info text-info center-block w-100">Is the data in the system?</p>
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <p class="arrow"><span class="fa fa-arrow-down"></span>
+            </div>
+            <div class="col-xs-6 text-center">
+                <p class="arrow">
+                    <span class="fa fa-arrow-down"></span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6 text-center">
+        <p class="center-block"><span class="btn btn-success btn-sm">Yes</span></p>
+        <p class="arrow center-block"><span class="fa fa-arrow-down"></span></p>
+
+        <p class="btn bg-light-success text-success step">Okay! Proceed to step 2.</p>
+    </div>
+    <div class="col-xs-6 text-center">
+        <p class="center-block"><span class="btn btn-danger btn-sm">No</span></p>
+        <p class="arrow center-block"><span class="fa fa-arrow-down"></span></p>
+        <p class="btn bg-light-info text-info step">Are you willing to put the data into the system?</p>
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <p class="arrow"><span class="fa fa-arrow-down"></span>
+            </div>
+            <div class="col-xs-6 text-center">
+                <p class="arrow">
+                    <span class="fa fa-arrow-down"></span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <p class="center-block"><span class="btn btn-success btn-sm">Yes</span></p>
+                <p class="arrow"><span class="fa fa-arrow-down"></span></p>
+                <p class="btn bg-light-success text-success step">Okay! After the data is in the system, proceed to step 2.</p>
+            </div>
+            <div class="col-xs-6 text-center">
+                <p class="center-block"><span class="btn btn-danger btn-sm">No</span></p>
+                <p class="arrow center-block"><span class="fa fa-arrow-down"></span></p>
+                <p class="btn bg-light-danger text-danger step">The data must be in the system to use this service.</p>
+            </div>
+        </div>
+    </div>
+</div>

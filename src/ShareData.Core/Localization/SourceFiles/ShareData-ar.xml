@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="ar-eg">
+	<texts>
+		<text name="ShareData" value="مشاركة بيانات" />
+		<text name="HomePage" value="الصفحة الرئيسية" />
+		<text name="AccountSettings" value="إعدادت الحساب" />
+		<text name="ConfigureAccountSettings" value="تهيئة إعدادات الحساب لاحتياجاتك" />
+		<text name="WelcomeBack" value="مرحبًا بك من جديد ، يرجى تسجيل الدخول إلى حسابك" />
+		<text name="CreateAccount" value="إنشاء حساب" />
+		<text name="FillFormToCreateNewAccount" value="املأ النموذج أدناه لإنشاء حساب جديد." />
+		<text name="AcceptTermsConditions" value="أوافق على الشروط والأحكام" />
+		<text name="General" value="عام" />
+		<text name="About" value="عنا" />
+		<text name="WelcomeMessage" value="مرحبا بك في مشاركة البيانات" />
+		<text name="Reset" value="إعادة ضبط" />
+		<text name="EditProfile" value="تعديل الملف الشخصي" />
+		<text name="Messages" value="الرسائل" />
+		<text name="Password" value="كلمة المرور" />
+		<text name="CurrentPassword" value="كلمة المرور الحالية" />
+		<text name="NewPassword" value="كلمة المرور الجديدة" />
+		<text name="ConfirmNewPassword" value="تأكيد كلمة المرور الجديدة" />
+		<text name="ResetPassword" value="استعادة كلمة المرور" />
+		<text name="ForgotPassword" value="هل نسيت كلمة المرور؟" />
+		<text name="ChangePassword" value="تحديث كلمة المرور" />
+		<text name="RememberMe" value="تذكرني" />
+		<text name="LogIn" value="تسجيل الدخول" />
+		<text name="LoginFailed" value="فشل في تسجيل الدخول" />
+		<text name="Name" value="الاسم" />
+		<text name="Surname" value="اسم العائلة" />
+		<text name="FullName" value="الإسم بالكامل" />
+		<text name="Age" value="العمر" />
+		<text name="ValidAge" value="الرجاء إدخال عُمر بين 0 و 120 سنة" />
+		<text name="Select" value="اختر" />
+		<text name="Gender" value="النوع" />
+		<text name="Fax" value="فاكس" />
+		<text name="Male" value="ذكر" />
+		<text name="Female" value="أنثي" />
+		<text name="Address" value="العنوان" />
+		<text name="PhoneNumber" value="رقم الجوال" />
+		<text name="PhoneNumberDigit" value="الرجاء إدخال رقم هاتف مكون من 11 رقمًا" />
+		<text name="ArabicTitle" value="العنوان العربي" />
+		<text name="EnglishTitle" value="العنوان الإنجليزي" />
+		<text name="Description" value="الوصف" />
+		<text name="ArabicDescription" value="الوصف العربي" />
+		<text name="EnglishDescription" value="الوصف الإنجليزي" />
+		<text name="Remove" value="حذف" />
+		<text name="EmailAddress" value="البريد الإلكتروني" />
+		<text name="Save" value="حفظ" />
+		<text name="Cancel" value="إلغاء" />
+		<text name="Register" value="إنشاء حساب" />
+		<text name="Logout" value="تسجيل خروج" />
+		<text name="IsActive" value="نشط" />
+		<text name="IsHome" value="إظهار في الصفحة الرئيسية" />
+		<text name="Yes" value="نعم" />
+		<text name="No" value="لا" />
+		<text name="Note" value="ملاحظة" />
+		<text name="Next" value="التالي" />
+		<text name="Previous" value="السابق" />
+		<text name="Optional" value="اختياري" />
+		<text name="Required" value="هذا مطلوب" />
+		<text name="AreYouSureDelete" value="هل أنت متأكد من حذف هذا العنصر؟" />
+		<text name="ConfirmDeletion" value="تأكيد الحذف" />
+		<text name="AreYouSureWantToDelete">هل أنت متأكد أنك تريد حذف {0}؟</text>
+		<text name="FormIsNotValidMessage" value="النموذج غير صالح. يرجى التحقق وإصلاح الأخطاء." />
+		<text name="PleaseEnterLoginInformation" value="يرجى إدخال معلومات تسجيل الدخول" />
+		<text name="AdminEmailAddress" value="عنوان البريد الإلكتروني للمشرف" />
+		<text name="AdminPassword" value="كلمة مرور المشرف" />
+		<text name="DefaultPasswordIs" value="كلمة المرور الافتراضية هي {0}" />
+		<text name="CanBeEmptyToLoginAsHost" value="يمكن أن يكون فارغًا لتسجيل الدخول كمضيف." />
+		<text name="OrLoginWith" value="أو تسجيل الدخول باستخدام" />
+		<text name="WaitingForActivationMessage" value="حسابك في انتظار التفعيل من قبل مشرف النظام." />
+		<text name="DatabaseConnectionString" value="سلسلة اتصال قاعدة البيانات" />
+		<text name="LeaveEmptyToSwitchToHost">اتركها فارغة للتبديل إلى المضيف</text>
+		<text name="NotSelected">لم يتم اختياره</text>
+		<text name="Change">تغيير</text>
+		<text name="ExpiryDate">تاريخ الانتهاء</text>
+		<text name="PickDate">اختر تاريخاً</text>
+		<text name="MultiLevelMenu">قائمة متعددة المستويات</text>
+		<text name="Back">رجوع</text>
+		<text name="WaitingForEmailActivation">يجب تفعيل عنوان بريدك الإلكتروني</text>
+		<text name="DisplayName">الاسم الظاهر</text>
+		<text name="Edit">تعديل</text>
+		<text name="Delete">حذف</text>
+		<text name="YesDeleteIt">نعم، احذفه!</text>
+		<text name="Actions">الإجراءات</text>
+		<text name="CouldNotCompleteLoginOperation">تعذر إتمام عملية تسجيل الدخول. يرجى المحاولة مرة أخرى لاحقًا.</text>
+		<text name="ThisFieldIsRequired">هذا الحقل مطلوب</text>
+		<text name="PleaseWait">يرجى الانتظار...</text>
+		<text name="Administration">الإدارة</text>
+		<text name="Clear">مسح</text>
+		<text name="ClearAll">مسح الكل</text>
+		<text name="ClearOthers">مسح الآخرين</text>
+		<text name="LabelOptions">خيارات العلامة</text>
+		<text name="Permissions">الصلاحيات</text>
+		<text name="Refresh">تحديث</text>
+		<text name="Create">إنشاء</text>
+		<text name="Version">الإصدار</text>
+		<text name="On">تشغيل</text>
+		<text name="Off">إيقاف</text>
+		<text name="StartTyping">ابدأ الكتابة</text>
+		<text name="Skins">الأشكال</text>
+		<text name="Settings">الإعدادات</text>
+		<text name="Filter">تصفية</text>
+		<text name="PasswordsDoNotMatch">كلمات المرور غير متطابقة</text>
+		<text name="PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber">يجب أن تتكون كلمات المرور من 8 أحرف على الأقل، وتحتوي على حرف صغير وحرف كبير ورقم</text>
+		<text name="SearchWithThreeDot">البحث...</text>
+		<text name="PleaseEnterAtLeastNCharacter">يرجى إدخال على الأقل {0} حرفًا</text>
+		<text name="PleaseEnterNoMoreThanNCharacter">يرجى إدخال لا يزيد عن {0} حرفًا</text>
+		<text name="InvalidEmailAddress">عنوان بريد إلكتروني غير صحيح</text>
+		<text name="InvalidPattern">غير صحيح</text>
+		<text name="PairsDoNotMatch">غير متطابقة</text>
+		<text name="All">الكل</text>
+		<text name="TotalRecordsCount">الإجمالي: {0}</text>
+		<text name="Search">بحث</text>
+		<text name="ResetPasswordStepOneInfo">1. أدخل كلمة مرور المسؤول الخاصة بك</text>
+		<text name="ResetPasswordStepTwoInfo">2. انسخ كلمة المرور العشوائية هذه حتى تتمكن من إرسالها إلى المستخدم</text>
+
+		<!--Roles-->
+		<text name="Roles">الأدوار</text>
+		<text name="CreateNewRole">إنشاء دور جديد</text>
+		<text name="EditRole">تحرير الدور</text>
+		<text name="RoleName">اسم الدور</text>
+		<text name="UserRoles">أدوار المستخدم</text>
+		<text name="RoleDescription">وصف الدور</text>
+		<text name="RoleDeleteWarningMessage">سيتم حذف الدور {0} وإلغاء تعيينه من جميع المستخدمين المعينين.</text>
+		<text name="RoleSelection" value="الرجاء اختيار أحد من أدوار المستخدمين." />
+
+		<!--Users-->
+		<text name="Users" value="المستخدمون" />
+		<text name="EditUser">تحرير المستخدم</text>
+		<text name="CreateNewUser" value="إنشاء مستخدم جديد" />
+		<text name="UserName" value="اسم المستخدم" />
+		<text name="UserNameOrEmail" value="اسم المستخدم أو الحساب" />
+		<text name="UserDetails">تفاصيل المستخدم</text>
+		<text name="CouldNotValidateExternalUser">تعذر التحقق من المستخدم الخارجي</text>
+		<text name="InvalidUserNameOrPassword" value="اسم المستخدم أو كلمة المرور غير صحيحة" />
+		<text name="UserIsNotActiveAndCanNotLogin" value="المستخدم {0} غير نشط ولا يمكن تسجيل الدخول." />
+		<text name="UserEmailIsNotConfirmedAndCanNotLogin">لم يتم تأكيد عنوان بريدك الإلكتروني. لا يمكنك تسجيل الدخول.</text>
+		<text name="UserLockedOutMessage">تم تعليق حساب المستخدم. يرجى المحاولة مرة أخرى لاحقًا.</text>
+		<text name="RegisterFormUserNameInvalidMessage">يرجى عدم إدخال عنوان بريد إلكتروني كاسم مستخدم.</text>
+		<text name="UsersActivation">تنشيط المستخدمين</text>
+		<text name="UserDeleteWarningMessage">سيتم حذف المستخدم {0}.</text>
+
+		<!--Tenants-->
+		<text name="Tenants" value="المستأجرون" />
+		<text name="TenancyName" value="اسم المستأجر" />
+		<text name="CreateNewTenant" value="إنشاء مستأجر جديد" />
+		<text name="EditTenant">تحرير المستأجر</text>
+		<text name="CurrentTenant">المستأجر الحالي</text>
+		<text name="ChangeTenant">تغيير المستأجر</text>
+		<text name="TenantSelection" value="اختيار المستأجر" />
+		<text name="TenantSelection_Detail" value="يرجى اختيار أحد المستأجرين التاليين." />
+		<text name="TenantNameCanNotBeEmpty" value="لا يمكن أن يكون اسم المستأجر فارغًا" />
+		<text name="ThereIsNoTenantDefinedWithName{0}" value="لا يوجد مستأجر معرف بالاسم {0}" />
+		<text name="TenantIsNotActive" value="المستأجر {0} غير نشط." />
+		<text name="TenantIdIsNotActive{0}">معرف المستأجر {0} غير نشط</text>
+		<text name="TenantName_Regex_Description" value="يجب أن يكون اسم المستأجر على الأقل 2 حرفًا، يبدأ بحرف ويتابع بحروف، أرقام، شرطة أو شرطة سفلية." />
+		<text name="UnknownTenantId{0}">معرف المستأجر غير معروف {0}</text>
+		<text name="TenantDeleteWarningMessage">سيتم حذف المستأجر {0}.</text>
+
+		<!--Datatable-->
+		<text name="Datatable.Create" value="إنشاء" />
+		<text name="Datatable.Search" value="بحث:" />
+		<text name="Datatable.Actions" value="إجراءات" />
+		<text name="Datatable.Loading" value="تحميل ..." />
+		<text name="Datatable.ItemsPerPage" value="عناصر لكل صفحة" />
+		<text name="Datatable.Total" value="إجمالي العناصر" />
+
+		<!--MediaFile-->
+		<text name="MediaFile.Attachments" value="المرفقات" />
+		<text name="MediaFile.UploadPhoto" value="حمل الصورة" />
+		<text name="MediaFile.ChooseFile" value="اختر الملف" />
+		<text name="MediaFile.Upload" value="رفع" />
+		<text name="MediaFile.Image" value="الصورة" />
+		<text name="MediaFile.Actions" value="إجراءات" />
+		<text name="MediaFile.Size" value="الحجم" />
+		<text name="MediaFile.DeleteImage" value="حذف الصورة" />
+		<text name="MediaFile.ImageName" value="اسم الصورة" />
+		<text name="MediaFile.SelectedImages" value=":الصور المختارة" />
+		<text name="MediaFile.AllowedExtension" value="مسموح بتنسيق JPG أو GIF أو PNG. أقصى حجم 800 كيلو بايت" />
+		<text name="MediaFile.Icon" value="الرمز" />
+		<text name="MediaFile.HasMediaFiles" value="لديه مرفقات" />
+
+		<!--Successful-->
+		<text name="Success" value="نجاح" />
+		<text name="SavedSuccessfully" value="تم حفظ البيانات بنجاح" />
+		<text name="UpdatedSuccessfully" value="تم تحديث البيانات بنجاح" />
+		<text name="DeletedSuccessfully" value="تم حذف البيانات بنجاح" />
+		<text name="SuccessfullyRegistered">تم التسجيل بنجاح</text>
+		<text name="UploadedFileSuccessfully" value="تم رفع الملف بنجاح" />
+		<text name="UpdatedPasswordSuccessfully" value="تم تحديث كلمة المرور بنجاح" />
+		<text name="DeletedFileSuccessfully" value="تم حذف الملف بنجاح" />
+		<text name="SentMessageSuccessfully" value="تم إرسال الرسالة بنجاح" />
+
+		<!--Error-->
+		<text name="Error" value="خطأ" />
+		<text name="ErrorDeletingItem" value="حدث خطأ أثناء حذف العنصر:" />
+
+		<!--WorkFlow-->
+		<text name="WorkFlow" value="خطة سير العمل" />
+		<text name="WorkFlow.Create" value="انشاء خطة سير العمل" />
+		<text name="WorkFlow.Edit" value="تعديل خطة سير العمل" />
+		<text name="WorkFlow.DataForm" value="خطة سير عمل نموذج طلب مشاركة بيانات خارجي" />
+		<text name="WorkFlow.About" value="خطة سير عمل نموذج طلب مشاركة بيانات خارجي لإدارة العمليات والمهام المتكررة التي تحدث بترتيب معين" />
+		<text name="WorkFlow.UnderConstruction" value="تحت الإنشاء!" />
+		<text name="WorkFlow.HasAcceptNextStep" value="لديه قبول الخطوة التالية" />
+		<text name="WorkFlow.Accept" value="قبول" />
+		<text name="WorkFlow.Reject" value="رفض" />
+		<text name="WorkFlow.HasRejectNextStep" value="لديه رفض الخطوة التالية" />
+		<text name="WorkFlow.IsArchive" value="حفظ النموذج" />
+		<text name="WorkFlow.IsAlreadyExisting" value="خطة سير العمل موجوده موجودة من قبل" />
+		<text name="WorkFlow.IsNotExisting" value="خطة سير العمل غير موجودة من قبل" />
+		
+		<!--Form-->
+		<text name="Form.DataForm" value="نموذج البيانات" />
+		<text name="Form.DataForms" value="نماذج البيانات" />
+		<text name="Form.SharingRequestForm" value="نموذج طلب مشاركة بيانات خارجي" />
+		<text name="Form.DataRequesterInformation" value="معلومات طالب البيانات والبيانات المطلوبة" />
+		<text name="Form.DataSetName" value="اسم مجموعة البيانات" />
+		<text name="Form.RequiredData" value="البيانات المطلوبة" />
+		<text name="Form.EntityName" value="اسم الجهة" />
+		<text name="Form.EntityRepresentativeName" value="اسم ممثل الجهة" />
+		<text name="Form.ParticipationPurpose" value="الهدف من المشاركة" />
+		<text name="Form.UseDate" value="تاريخ الاستخدام" />
+		<text name="Form.UsePeriod" value="مدة الاستخدام" />
+		<text name="Form.DataSharingPeriodicity" value="دورية مشاركة البيانات" />
+		<text name="Form.DataSharingPeriodicity.Daily" value="يوميا" />
+		<text name="Form.DataSharingPeriodicity.Weekly" value="أسبوعيا" />
+		<text name="Form.DataSharingPeriodicity.Monthly" value="شهريا" />
+		<text name="Form.DataSharingPeriodicity.Year" value="سنويا" />
+		<text name="Form.DataSharingPeriodicity.AtRequest" value="عند الطلب" />
+		<text name="Form.DataForm.IsAlreadyExisting" value="نموذج البيانات موجود موجودة من قبل" />
+		<text name="Form.DataForm.IsNotExisting" value="نموذج البيانات غير موجود من قبل" />
+		<text name="Form.DataForm.IsArchived" value="نموذج البيانات محفوظ" />
+		<text name="Form.DataForm.MovedToNextStageSuccessfully" value="تم انتقال النموذج الي المرحلة التالية بنجاح" />
+
+	</texts>
+</localizationDictionary>

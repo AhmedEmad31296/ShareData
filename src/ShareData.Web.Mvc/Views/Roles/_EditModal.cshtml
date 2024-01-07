@@ -1,0 +1,51 @@
+﻿@using ShareData.Web.Models.Roles
+@using ShareData.Web.Models.Common.Modals
+@model EditRoleModalViewModel
+<div class="modal-header">
+    <h6 class="modal-title" id="myModalLabel35">@L("EditRole") </h6>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true"><i class="ft-x font-medium-2 text-bold-700"></i></span>
+    </button>
+</div>
+<form name="roleEditForm" role="form" class="form-horizontal">
+    <input type="hidden" name="Id" value="@Model.Role.Id" />
+    <input type="hidden" name="IsStatic" value="@(Model.Role.IsStatic.ToString())" />
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="rolename">@L("RoleName")</label>
+            <div class="col-md-9">
+                <input id="rolename" class="form-control" type="text" name="Name" value="@Model.Role.Name" @(Model.Role.IsStatic ? "disabled" : "") required maxlength="32" minlength="2">
+            </div>
+        </div>
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="displayname">@L("DisplayName")</label>
+            <div class="col-md-9">
+                <input id="displayname" type="text" class="form-control" name="DisplayName" value="@Model.Role.DisplayName" required maxlength="32" minlength="2">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="role-description">@L("RoleDescription")</label>
+            <div class="col-md-9">
+                <textarea id="role-description" class="form-control" name="Description">@Model.Role.Description</textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">@L("Permissions")</label>
+            <div class="col-md-9">
+                <div class="row">
+                    @foreach (var permission in Model.Permissions)
+                    {
+                        <div class="custom-control custom-checkbox col-md-6">
+                            <input type="checkbox" class="custom-control-input" name="permission" value="@permission.Name" id="@($"permission{permission.Name}")" @(Model.HasPermission(permission) ? "checked" : "") @(Model.Role.IsStatic ? "disabled" : "") />
+                            <label class="custom-control-label" for="@($"permission{permission.Name}")">@permission.DisplayName</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn bg-light-success" onclick="update()">@L("Save")</button>
+        <button type="reset" class="btn bg-light-secondary" data-dismiss="modal">@L("Cancel")</button>
+    </div>
+</form>
