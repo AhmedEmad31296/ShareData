@@ -46,9 +46,17 @@ namespace ShareData.Web.Controllers
                 HasAcceptNextStep = st.HasAcceptNextStep,
                 HasRejectNextStep = st.HasRejectNextStep
             }).FirstOrDefault();
-            string stages = DrawStages(root);
 
-            return View("_DrawStages", stages);
+            if (root != null)
+            {
+                string stages = DrawStages(root);
+                return View("_DrawStages", stages);
+            }
+            else
+            {
+                return View("_DrawStages", string.Empty);
+            }
+
         }
         [HttpPost]
         public async Task<JsonResult> Create([FromBody] CreateWorkFlowInput input)
