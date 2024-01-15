@@ -47,16 +47,8 @@ namespace ShareData.Web.Controllers
                 HasRejectNextStep = st.HasRejectNextStep
             }).FirstOrDefault();
 
-            if (root != null)
-            {
-                string stages = DrawStages(root);
-                return View("_DrawStages", stages);
-            }
-            else
-            {
-                return View("_DrawStages", string.Empty);
-            }
-
+            string stages = DrawStages(root);
+            return View("_DrawStages", stages);
         }
         [HttpPost]
         public async Task<JsonResult> Create([FromBody] CreateWorkFlowInput input)
@@ -100,15 +92,15 @@ namespace ShareData.Web.Controllers
             StringBuilder htmlBuilder = new();
 
             // Draw the HTML for the current workflow stage
-            htmlBuilder.AppendLine($"<header><h2 class='text-center'> {root.WorkFlowName} <a onclick='editWorkFlow()' class='btn btn-warning bg-light-warning btn-icon round mr-1 mb-1'><i class='fa fa-edit'></i></a></h2></header>");
-            htmlBuilder.AppendLine("<div class='d-flex justify-content-between pb-2'>");
-            htmlBuilder.AppendLine($"<h6 class='page-header'>{root.WorkFlowDescription}</h6>");
             if (root is null)
+            {
                 htmlBuilder.AppendLine($"<a onclick='createWorkFlowStageModal({root.WorkFlowId},null,null)' class='btn btn-success bg-light-success mb-1'><i class='fa fa-plus-square'></i> {@L("Create")} </a>");
-            htmlBuilder.AppendLine("</div>");
-
-            // Draw HTML for root stage
-            if (root != null)
+                htmlBuilder.AppendLine($"<header><h2 class='text-center'> {root.WorkFlowName} <a onclick='editWorkFlow()' class='btn btn-warning bg-light-warning btn-icon round mr-1 mb-1'><i class='fa fa-edit'></i></a></h2></header>");
+                htmlBuilder.AppendLine("<div class='d-flex justify-content-between pb-2'>");
+                htmlBuilder.AppendLine($"<h6 class='page-header'>{root.WorkFlowDescription}</h6>");
+                htmlBuilder.AppendLine("</div>");
+            }
+            else
             {
                 var children1 = _workFlowAppService.GetChildren(root.WorkFlowStageId);
 
