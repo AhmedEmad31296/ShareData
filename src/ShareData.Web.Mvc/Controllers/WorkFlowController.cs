@@ -26,7 +26,7 @@ namespace ShareData.Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var workFlow = await _workFlowAppService.Get();
+            var workFlow = _workFlowAppService.Get();
             GetRolesInput input = new();
             var userRoles = await _roleAppService.GetRolesAsync(input);
             ViewData["UserRoles"] = new SelectList(userRoles.Items, "Id", "Name");
@@ -73,7 +73,7 @@ namespace ShareData.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> EditWorkFlowModal()
         {
-            var workflow = await _workFlowAppService.Get();
+            var workflow = _workFlowAppService.Get();
             return PartialView("_EditWorkFlowModal", workflow);
         }
         [HttpGet]

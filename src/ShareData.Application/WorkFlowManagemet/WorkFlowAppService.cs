@@ -55,11 +55,11 @@ namespace ShareData.WorkFlowManagemet
             await _WorkFlowRepository.UpdateAsync(workFlow);
             return L("UpdatedSuccessfully");
         }
-        public async Task<WorkFlow> Get()
+        public WorkFlow Get()
         {
-            var workFlow = await _WorkFlowRepository.GetAll()
+            var workFlow = _WorkFlowRepository.GetAll()
                 .Include(x => x.WorkFlowStages)
-                .FirstOrDefaultAsync();
+                .FirstOrDefault();
             return workFlow;
         }
         public async Task<string> CreateStage(CreateWorkFlowStageInput input)

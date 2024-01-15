@@ -15,7 +15,7 @@ namespace ShareData.WorkFlowManagemet
     {
         Task<string> Create(CreateWorkFlowInput input);
         Task<string> Update(UpdateWorkFlowInput input);
-        Task<WorkFlow> Get();
+        WorkFlow Get();
         Task<string> CreateStage(CreateWorkFlowStageInput input);
         Task<string> UpdateStage(UpdateWorkFlowStageInput input);
         Task<WorkFlowStage> GetStage(int workFlowStageId);
