@@ -45,16 +45,9 @@ namespace ShareData.WorkFlowManagemet.Dto
         public bool IsArchived { get; set; }
         public int RoleId { get; set; }
     }
-    public class WorkFlowShortInfoDto
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-    }
     public class WorkFlowStageShortInfoDto 
     {
         public int WorkFlowId { get; set; }
-        public string WorkFlowName { get; set; }
-        public string WorkFlowDescription { get; set; }
         public int WorkFlowStageId { get; set; }
         public string WorkFlowStageName { get; set; }
         public bool HasAcceptNextStep { get; set; }

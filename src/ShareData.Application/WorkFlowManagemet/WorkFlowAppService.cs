@@ -114,9 +114,7 @@ namespace ShareData.WorkFlowManagemet
                 .Where(x => x.ParentId == parentId)
                 .Select(w => new WorkFlowStageShortInfoDto
                 {
-                    WorkFlowId = w.WorkFlowStage.WorkFlowId,
-                    WorkFlowName = w.WorkFlowStage.Name,
-                    WorkFlowDescription = w.WorkFlowStage.Description,
+                    WorkFlowId = w.Id,
                     WorkFlowStageId = w.WorkFlowStageId,
                     WorkFlowStageName = w.WorkFlowStage.Name,
                     LevelStatus = w.LevelStatus,

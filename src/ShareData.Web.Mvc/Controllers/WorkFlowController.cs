@@ -39,15 +39,13 @@ namespace ShareData.Web.Controllers
             var root = workFlow.WorkFlowStages.Select(st => new WorkFlowStageShortInfoDto
             {
                 WorkFlowId = st.WorkFlowId,
-                WorkFlowName = st.WorkFlow.Name,
-                WorkFlowDescription = st.WorkFlow.Description,
                 WorkFlowStageId = st.Id,
                 WorkFlowStageName = st.Name,
                 HasAcceptNextStep = st.HasAcceptNextStep,
                 HasRejectNextStep = st.HasRejectNextStep
             }).FirstOrDefault();
 
-            string stages = DrawStages(root);
+            string stages = DrawStages(workFlow, root);
             return View("_DrawStages", stages);
         }
         [HttpPost]
@@ -86,21 +84,18 @@ namespace ShareData.Web.Controllers
             return PartialView("_EditStageModal", stage);
         }
 
-        private string DrawStages(WorkFlowStageShortInfoDto root)
+        private string DrawStages(WorkFlow workFlow, WorkFlowStageShortInfoDto root)
         {
 
             StringBuilder htmlBuilder = new();
 
             // Draw the HTML for the current workflow stage
-            if (root is null)
-            {
-                htmlBuilder.AppendLine($"<a onclick='createWorkFlowStageModal({root.WorkFlowId},null,null)' class='btn btn-success bg-light-success mb-1'><i class='fa fa-plus-square'></i> {@L("Create")} </a>");
-                htmlBuilder.AppendLine($"<header><h2 class='text-center'> {root.WorkFlowName} <a onclick='editWorkFlow()' class='btn btn-warning bg-light-warning btn-icon round mr-1 mb-1'><i class='fa fa-edit'></i></a></h2></header>");
-                htmlBuilder.AppendLine("<div class='d-flex justify-content-between pb-2'>");
-                htmlBuilder.AppendLine($"<h6 class='page-header'>{root.WorkFlowDescription}</h6>");
-                htmlBuilder.AppendLine("</div>");
-            }
-            else
+            htmlBuilder.AppendLine($"<a onclick='createWorkFlowStageModal({workFlow.Id},null,null)' class='btn btn-success bg-light-success mb-1'><i class='fa fa-plus-square'></i> {@L("Create")} </a>");
+            htmlBuilder.AppendLine($"<header><h2 class='text-center'> {workFlow.Name} <a onclick='editWorkFlow()' class='btn btn-warning bg-light-warning btn-icon round mr-1 mb-1'><i class='fa fa-edit'></i></a></h2></header>");
+            htmlBuilder.AppendLine("<div class='d-flex justify-content-between pb-2'>");
+            htmlBuilder.AppendLine($"<h6 class='page-header'>{workFlow.Description}</h6>");
+            htmlBuilder.AppendLine("</div>");
+            if (root != null)
             {
                 var children1 = _workFlowAppService.GetChildren(root.WorkFlowStageId);
 
