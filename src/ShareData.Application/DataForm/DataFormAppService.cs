@@ -106,11 +106,6 @@ namespace ShareData.DataForm
         }
         public async Task<string> Insert(InsertDataFormInput input)
         {
-            bool formIsExisting = await _FormRepository.GetAll().Where(b => b.EntityName.Equals(input.EntityName)).AnyAsync();
-            if (formIsExisting)
-                throw new UserFriendlyException(L("Form.DataForm.IsAlreadyExisting"));
-
-
             Form form = new()
             {
                 EntityName = input.EntityName,
