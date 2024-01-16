@@ -1,5 +1,5 @@
-﻿@using ShareData.WorkFlowManagemet;
-@model WorkFlowStage
+﻿@using ShareData.WorkFlowManagemet.Dto
+@model WorkFlowStageInfoDto
 <div class="modal-header">
     <h6 class="modal-title">@L("WorkFlow.Edit")</h6>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -15,9 +15,17 @@
         </fieldset>
         <br>
         <fieldset class="form-group floating-label-form-group">
-            <label for="activity">@L("UserRoles")</label>
+            <label for="userRoles">@L("UserRoles")</label>
             <div class="form-group">
                 <select class="form-control" name="RoleId" id="userRoles" asp-for="RoleId" asp-items="@(ViewData["UserRoles"] as SelectList)" required>
+                    <option selected disabled value="">@L("Select")</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset class="form-group floating-label-form-group users">
+            <label for="users">@L("Users")</label>
+            <div class="form-group">
+                <select class="form-control" name="UserId" id="UserId" asp-items="@(ViewData["Users"] as MultiSelectList)">
                     <option selected disabled value="">@L("Select")</option>
                 </select>
             </div>

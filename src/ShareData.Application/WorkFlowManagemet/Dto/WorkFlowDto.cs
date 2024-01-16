@@ -31,6 +31,7 @@ namespace ShareData.WorkFlowManagemet.Dto
         public bool HasRejectNextStep { get; set; }
         public bool IsArchived { get; set; }
         public int RoleId { get; set; }
+        public long? UserId { get; set; }
         public int WorkFlowId { get; set; }
         public LevelStatus? LevelStatus { get; set; }
         public int? ParentId { get; set; }
@@ -44,8 +45,10 @@ namespace ShareData.WorkFlowManagemet.Dto
         public bool HasMediaFiles { get; set; }
         public bool IsArchived { get; set; }
         public int RoleId { get; set; }
+        public long? UserId { get; set; }
+
     }
-    public class WorkFlowStageShortInfoDto 
+    public class WorkFlowStageShortInfoDto
     {
         public int WorkFlowId { get; set; }
         public int WorkFlowStageId { get; set; }
@@ -54,6 +57,17 @@ namespace ShareData.WorkFlowManagemet.Dto
         public bool HasRejectNextStep { get; set; }
         public LevelStatus LevelStatus { get; set; }
 
+    }
+    public class WorkFlowStageInfoDto : Entity
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool HasMediaFiles { get; set; }
+        public bool HasAcceptNextStep { get; set; }
+        public bool HasRejectNextStep { get; set; }
+        public bool IsArchived { get; set; }
+        public int RoleId { get; set; }
+        public List<long> UserIds { get; set; }
     }
     public class NextWorkFlowStageShortInfoDto
     {

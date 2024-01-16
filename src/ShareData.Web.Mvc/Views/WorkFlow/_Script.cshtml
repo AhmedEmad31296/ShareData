@@ -1,4 +1,7 @@
 ﻿<script>
+    $(document).ready(function () {
+        $('.users').hide();
+    });
     function createWorkFlow() {
         var _$form = $('form[name="createWorkFlowForm"]');
         abp.ui.setBusy(_$form);
@@ -94,6 +97,7 @@
             return obj;
         }, {});
         formData.roleId = selectedUserRole;
+        debugger
         formData.HasMediaFiles = _$form.find('[name="HasMediaFiles"]').prop('checked');
         formData.IsArchived = _$form.find('[name="IsArchived"]').prop('checked');
         formData.HasAcceptNextStep = _$form.find('[name="HasAcceptNextStep"]').prop('checked');
@@ -143,4 +147,37 @@
             }
         });
     }
+
+
+    $('#userRoles').change(function () {
+        var roleId = $(this).val();
+        if (roleId) {
+            $.ajax({
+                url: '/WorkFlow/GetUsersByRoleId',
+                type: 'GET',
+                data: { roleId: roleId },
+                success: function (data) {
+                    var usersDropdown = $('#UserId');
+                    usersDropdown.empty();
+                    usersDropdown.append('<option selected disabled value="">@L("Select")</option>');
+                    $.each(data.result, function (index, user) {
+                        usersDropdown.append($('<option>', {
+                            value: user.id,
+                            text: user.userName
+                        }));
+                    });
+
+                    $('.users').show();
+                },
+                error: function (res) {
+                    toastr.error(res.responseJSON.error.message, '@L("Error")');
+                }
+            });
+        } else {
+            $('#UserId').empty();
+            $('.users').hide();
+        }
+    });
+
+
 </script>

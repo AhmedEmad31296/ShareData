@@ -3,12 +3,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
+using ShareData.Authorization.Users;
 using ShareData.Controllers;
 using ShareData.Roles;
 using ShareData.Roles.Dto;
+using ShareData.Users;
 using ShareData.WorkFlowManagemet;
 using ShareData.WorkFlowManagemet.Dto;
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +22,13 @@ namespace ShareData.Web.Controllers
     {
         private readonly IWorkFlowAppService _workFlowAppService;
         private readonly IRoleAppService _roleAppService;
-        public WorkFlowController(IWorkFlowAppService workFlowAppService, IRoleAppService roleAppService)
+        private readonly IUserAppService _userAppService;
+        public WorkFlowController(IWorkFlowAppService workFlowAppService, IRoleAppService roleAppService, IUserAppService userAppService)
         {
             _workFlowAppService = workFlowAppService;
             _roleAppService = roleAppService;
+            _userAppService = userAppService;
+
         }
         public async Task<IActionResult> Index()
         {
@@ -30,10 +36,8 @@ namespace ShareData.Web.Controllers
             GetRolesInput input = new();
             var userRoles = await _roleAppService.GetRolesAsync(input);
             ViewData["UserRoles"] = new SelectList(userRoles.Items, "Id", "Name");
-            //return View();
             if (workFlow == null)
             {
-                // Display under construction message
                 return View("_UnderConstruction");
             }
             var root = workFlow.WorkFlowStages.Select(st => new WorkFlowStageShortInfoDto
@@ -69,7 +73,7 @@ namespace ShareData.Web.Controllers
             return Json(await _workFlowAppService.UpdateStage(input));
         }
         [HttpGet]
-        public async Task<ActionResult> EditWorkFlowModal()
+        public ActionResult EditWorkFlowModal()
         {
             var workflow = _workFlowAppService.Get();
             return PartialView("_EditWorkFlowModal", workflow);
@@ -80,10 +84,11 @@ namespace ShareData.Web.Controllers
             GetRolesInput input = new();
             var userRoles = await _roleAppService.GetRolesAsync(input);
             var stage = await _workFlowAppService.GetStage(id);
+            var users = await _userAppService.GetUsersByRoleIdAsync(stage.RoleId);
             ViewData["UserRoles"] = new SelectList(userRoles.Items, "Id", "Name", stage.RoleId);
+            ViewData["Users"] = new MultiSelectList(users, "Id", "UserName", stage.UserIds);
             return PartialView("_EditStageModal", stage);
         }
-
         private string DrawStages(WorkFlow workFlow, WorkFlowStageShortInfoDto root)
         {
 
@@ -266,7 +271,7 @@ namespace ShareData.Web.Controllers
                         htmlBuilder.AppendLine("</div>");
                     }
                     else
-                        htmlBuilder.AppendLine($"<p class='center-block'><a href='#' onclick='createWorkFlowStageModal({root.WorkFlowId},{child1.WorkFlowStageId},1)' class='btn btn-success btn-sm'>{@L("WorkFlow.Accept")}</a></p>");
+                        htmlBuilder.AppendLine($"<p class='center-block'><a href='#' onclick='createWorkFlowStageModal({root.WorkFlowId},{root.WorkFlowStageId},1)' class='btn btn-success btn-sm'>{@L("WorkFlow.Accept")}</a></p>");
                     htmlBuilder.AppendLine("</div>");
                 }
                 if (root.HasRejectNextStep)
@@ -332,7 +337,7 @@ namespace ShareData.Web.Controllers
                         htmlBuilder.AppendLine("</div>");
                     }
                     else
-                        htmlBuilder.AppendLine($"<p class='center-block'><a href='#' onclick='createWorkFlowStageModal({root.WorkFlowId},{child1.WorkFlowStageId},0)' class='btn btn-danger btn-sm'>{@L("WorkFlow.Reject")}</a></p>");
+                        htmlBuilder.AppendLine($"<p class='center-block'><a href='#' onclick='createWorkFlowStageModal({root.WorkFlowId},{root.WorkFlowStageId},0)' class='btn btn-danger btn-sm'>{@L("WorkFlow.Reject")}</a></p>");
                     htmlBuilder.AppendLine("</div>");
                 }
 
@@ -342,6 +347,9 @@ namespace ShareData.Web.Controllers
 
             return htmlBuilder.ToString();
         }
-
+        public async Task<List<User>> GetUsersByRoleId(int roleId)
+        {
+            return await _userAppService.GetUsersByRoleIdAsync(roleId);
+        }
     }
 }

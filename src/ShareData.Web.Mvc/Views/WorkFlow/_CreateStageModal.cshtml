@@ -19,10 +19,17 @@
                     </fieldset>
                     <br>
                     <fieldset class="form-group floating-label-form-group">
-                        <label for="activity">@L("UserRoles")</label>
+                        <label for="userRoles">@L("UserRoles")</label>
                         <div class="form-group">
                             <select class="form-control" name="RoleId" id="userRoles" asp-items="@(ViewData["UserRoles"] as SelectList)" required>
                                 <option selected disabled value="">@L("Select")</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group floating-label-form-group users">
+                        <label for="UserId">@L("Users")</label>
+                        <div class="form-group">
+                            <select class="form-control" name="UserId" id="UserId">
                             </select>
                         </div>
                     </fieldset>

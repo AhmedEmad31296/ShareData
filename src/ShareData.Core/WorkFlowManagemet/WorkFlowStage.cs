@@ -33,5 +33,6 @@ namespace ShareData.WorkFlowManagemet
         public int WorkFlowId { get; set; }
         public WorkFlow WorkFlow { get; set; }
         public ICollection<WorkFlowStageStatus> WorkFlowStageStatus { get; set; }
+        public ICollection<WorkFlowStageUser> WorkFlowStageUsers { get; set; }
     }
 }

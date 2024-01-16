@@ -20,14 +20,17 @@ namespace ShareData.WorkFlowManagemet
         private readonly IRepository<WorkFlow> _WorkFlowRepository;
         private readonly IRepository<WorkFlowStage> _WorkFlowStageRepository;
         private readonly IRepository<WorkFlowStageStatus> _WorkFlowStageStatusRepository;
+        private readonly IRepository<WorkFlowStageUser> _WorkFlowStageUserRepository;
 
         public WorkFlowAppService(IRepository<WorkFlow> workFlowRepository
             , IRepository<WorkFlowStage> workFlowStageRepository
-            , IRepository<WorkFlowStageStatus> workFlowStageStatusRepository)
+            , IRepository<WorkFlowStageStatus> workFlowStageStatusRepository
+            , IRepository<WorkFlowStageUser> workFlowStageUserRepository)
         {
             _WorkFlowRepository = workFlowRepository;
             _WorkFlowStageRepository = workFlowStageRepository;
             _WorkFlowStageStatusRepository = workFlowStageStatusRepository;
+            _WorkFlowStageUserRepository = workFlowStageUserRepository;
         }
         public async Task<string> Create(CreateWorkFlowInput input)
         {
@@ -86,11 +89,22 @@ namespace ShareData.WorkFlowManagemet
                 };
                 await _WorkFlowStageStatusRepository.InsertAsync(workFlowStageStatus);
             }
+            if (input.UserId.HasValue)
+            {
+                WorkFlowStageUser user = new()
+                {
+                    UserId = input.UserId.Value,
+                    WorkFlowStageId = workFlowStageId
+                };
+                await _WorkFlowStageUserRepository.InsertAsync(user);
+            }
             return L("SavedSuccessfully");
         }
         public async Task<string> UpdateStage(UpdateWorkFlowStageInput input)
         {
-            WorkFlowStage workFlowStage = await _WorkFlowStageRepository.GetAll().Where(b => b.Id == input.Id).FirstOrDefaultAsync();
+            WorkFlowStage workFlowStage = await _WorkFlowStageRepository.GetAll()
+                                                                        .Where(b => b.Id == input.Id)
+                                                                        .FirstOrDefaultAsync();
             workFlowStage.Name = input.Name;
             workFlowStage.Description = input.Description;
             workFlowStage.HasAcceptNextStep = input.HasAcceptNextStep;
@@ -98,14 +112,56 @@ namespace ShareData.WorkFlowManagemet
             workFlowStage.HasMediaFiles = input.HasMediaFiles;
             workFlowStage.IsArchived = input.IsArchived;
             workFlowStage.RoleId = input.RoleId;
+
+            WorkFlowStageUser workFlowStageUser = await _WorkFlowStageUserRepository.GetAll()
+                                                                      .Where(b => b.WorkFlowStageId == workFlowStage.Id)
+                                                                      .FirstOrDefaultAsync();
+            if (input.UserId.HasValue)
+            {
+                if (workFlowStageUser != null)
+                {
+                    if (workFlowStageUser.UserId != input.UserId.Value)
+                    {
+                        workFlowStageUser.UserId = input.UserId.Value;
+                        await _WorkFlowStageUserRepository.UpdateAsync(workFlowStageUser);
+                    }
+                }
+                else
+                {
+                    await _WorkFlowStageUserRepository.InsertAsync(new WorkFlowStageUser
+                    {
+                        UserId = input.UserId.Value,
+                        WorkFlowStageId = workFlowStage.Id,
+                    });
+                }
+            }
+            else
+            {
+                if (workFlowStageUser != null)
+                {
+                    await _WorkFlowStageUserRepository.DeleteAsync(workFlowStageUser);
+                }
+            }
+
             await _WorkFlowStageRepository.UpdateAsync(workFlowStage);
             return L("UpdatedSuccessfully");
         }
-        public async Task<WorkFlowStage> GetStage(int workFlowStageId)
+        public async Task<WorkFlowStageInfoDto> GetStage(int workFlowStageId)
         {
             var stage = await _WorkFlowStageRepository.GetAll()
                 .Where(w => w.Id == workFlowStageId)
-                .FirstOrDefaultAsync();
+                .Select(s => new WorkFlowStageInfoDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    Description = s.Description,
+                    HasMediaFiles = s.HasMediaFiles,
+                    HasAcceptNextStep = s.HasAcceptNextStep,
+                    HasRejectNextStep = s.HasRejectNextStep,
+                    IsArchived = s.IsArchived,
+                    RoleId = s.RoleId,
+                    UserIds = s.WorkFlowStageUsers.Where(x => !x.IsDeleted).Select(x => x.UserId).ToList(),
+                }).FirstOrDefaultAsync();
             return stage;
         }
         public List<WorkFlowStageShortInfoDto> GetChildren(int parentId)

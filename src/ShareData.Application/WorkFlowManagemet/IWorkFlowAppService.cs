@@ -18,7 +18,7 @@ namespace ShareData.WorkFlowManagemet
         WorkFlow Get();
         Task<string> CreateStage(CreateWorkFlowStageInput input);
         Task<string> UpdateStage(UpdateWorkFlowStageInput input);
-        Task<WorkFlowStage> GetStage(int workFlowStageId);
+        Task<WorkFlowStageInfoDto> GetStage(int workFlowStageId);
         List<WorkFlowStageShortInfoDto> GetChildren(int parentId);
         Task<int> GetRootId();
         Task<NextWorkFlowStageShortInfoDto> GetNextWorkFlowStage(int workFlowStageId, LevelStatus stageType);

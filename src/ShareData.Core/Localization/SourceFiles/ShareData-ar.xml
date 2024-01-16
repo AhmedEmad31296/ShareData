@@ -124,6 +124,7 @@
 		<text name="RoleDescription">وصف الدور</text>
 		<text name="RoleDeleteWarningMessage">سيتم حذف الدور {0} وإلغاء تعيينه من جميع المستخدمين المعينين.</text>
 		<text name="RoleSelection" value="الرجاء اختيار أحد من أدوار المستخدمين." />
+		<text name="RoleIsNotExisting" value="دور غير موجود من قبل" />
 
 		<!--Users-->
 		<text name="Users" value="المستخدمون" />

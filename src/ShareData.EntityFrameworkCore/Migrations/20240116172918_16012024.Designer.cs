@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShareData.EntityFrameworkCore;
 
@@ -11,9 +12,10 @@ using ShareData.EntityFrameworkCore;
 namespace ShareData.Migrations
 {
     [DbContext(typeof(ShareDataDbContext))]
-    partial class ShareDataDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240116172918_16012024")]
+    partial class _16012024
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

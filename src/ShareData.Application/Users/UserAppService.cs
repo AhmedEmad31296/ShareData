@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -15,7 +14,6 @@ using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.UI;
 using ShareData.Authorization;
-using ShareData.Authorization.Accounts;
 using ShareData.Authorization.Roles;
 using ShareData.Authorization.Users;
 using ShareData.Roles.Dto;
@@ -24,6 +22,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShareData.Helpers;
 using System.Linq.Dynamic.Core;
+using Abp.Authorization.Users;
 
 namespace ShareData.Users
 {
@@ -33,6 +32,7 @@ namespace ShareData.Users
         private readonly UserManager _userManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<UserRole, long> _userRoleRepository;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
@@ -42,6 +42,7 @@ namespace ShareData.Users
             UserManager userManager,
             RoleManager roleManager,
             IRepository<Role> roleRepository,
+            IRepository<UserRole, long> userRoleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
             LogInManager logInManager)
@@ -50,6 +51,7 @@ namespace ShareData.Users
             _userManager = userManager;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
+            _userRoleRepository = userRoleRepository;
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
@@ -173,6 +175,13 @@ namespace ShareData.Users
             return new ListResultDto<RoleDto>(ObjectMapper.Map<List<RoleDto>>(roles));
         }
 
+        public async Task<List<User>> GetUsersByRoleIdAsync(int roleId)
+        {
+            var role = await _roleManager.FindByIdAsync(roleId.ToString()) ?? throw new UserFriendlyException("RoleIsNotExisting");
+            var usersInRole = await _userManager.GetUsersInRoleAsync(role.Name);
+
+            return usersInRole.ToList();
+        }
         public async Task ChangeLanguage(ChangeUserLanguageDto input)
         {
             await SettingManager.ChangeSettingForUserAsync(

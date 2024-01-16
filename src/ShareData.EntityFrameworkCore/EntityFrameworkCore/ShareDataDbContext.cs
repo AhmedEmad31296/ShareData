@@ -22,6 +22,7 @@ namespace ShareData.EntityFrameworkCore
         public DbSet<WorkFlow> WorkFlows { get; set; }
         public DbSet<WorkFlowStage> WorkFlowStages { get; set; }
         public DbSet<WorkFlowStageStatus> WorkFlowStageStatus { get; set; }
+        public DbSet<WorkFlowStageUser> WorkFlowStageUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +32,11 @@ namespace ShareData.EntityFrameworkCore
                 .HasOne(status => status.WorkFlowStage)
                 .WithMany(stage => stage.WorkFlowStageStatus)
                 .HasForeignKey(status => status.WorkFlowStageId);
+
+            modelBuilder.Entity<WorkFlowStage>()
+            .HasMany(w => w.WorkFlowStageUsers)
+            .WithOne(u => u.WorkFlowStage)
+            .HasForeignKey(u => u.WorkFlowStageId);
         }
 
     }
