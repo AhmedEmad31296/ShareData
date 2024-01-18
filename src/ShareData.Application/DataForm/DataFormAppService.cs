@@ -24,7 +24,6 @@ using ShareData.Authorization.Roles;
 
 namespace ShareData.DataForm
 {
-    [AbpAuthorize]
     public class DataFormAppService : ShareDataAppServiceBase, IDataFormAppService
     {
         private readonly IRepository<Form> _FormRepository;
@@ -53,7 +52,7 @@ namespace ShareData.DataForm
             _HttpContextAccessor = httpContextAccessor;
             BaseUrl = $"{this._HttpContextAccessor.HttpContext.Request.Scheme}://{this._HttpContextAccessor.HttpContext.Request.Host}{this._HttpContextAccessor.HttpContext.Request.PathBase}";
         }
-
+        [AbpAuthorize]
         public async Task<DatatableFilterdDto<DataFormPagedDto>> GetPaged(FilterDataFormPagedInput input)
         {
             IQueryable<Form> query = _FormRepository.GetAll().Where(e => !e.IsDeleted)
@@ -131,6 +130,7 @@ namespace ShareData.DataForm
             return L("SavedSuccessfully");
 
         }
+        [AbpAuthorize]
         public async Task<string> Update(UpdateDataFormInput input)
         {
             bool dailyTaskIsExisting = await _FormRepository.GetAll().Where(b => b.Id != input.Id && b.EntityName.Equals(input.EntityName)).AnyAsync();
@@ -154,6 +154,7 @@ namespace ShareData.DataForm
 
             return L("UpdatedSuccessfully");
         }
+        [AbpAuthorize]
         public GetFullInfoDataFormDto Get(int id)
         {
             Form form = _FormRepository.GetAll()
@@ -190,6 +191,7 @@ namespace ShareData.DataForm
             }
             return entity;
         }
+        [AbpAuthorize]
         public async Task<string> Delete(int id)
         {
             Form form = await _FormRepository.GetAll()
@@ -200,6 +202,7 @@ namespace ShareData.DataForm
 
             return L("DeletedSuccessfully");
         }
+        [AbpAuthorize]
         public async Task<string> InsertNewFormStage([FromForm] InsertNewFormStageInput input)
         {
             FormStage formStage = new()
@@ -233,6 +236,7 @@ namespace ShareData.DataForm
             return L("Form.DataForm.MovedToNextStageSuccessfully");
 
         }
+        [AbpAuthorize]
         public async Task<NextWorkFlowStageShortInfoDto> GetNextWorkFlowStageDetailsForDataForm(int formId, LevelStatus stageType)
         {
             var currentStage = await _FormStageRepository.GetAll().Where(s => s.FormId == formId).OrderByDescending(s => s.CreationTime).FirstOrDefaultAsync();
